@@ -21,6 +21,7 @@ function TodoForm({ addTodo }) {
   };
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
     if (formInput.trim() === "") {
       return;
     }
