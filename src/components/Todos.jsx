@@ -84,7 +84,7 @@ const Todos = () => {
         </div>
         <div>
           <button
-            className="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-5 rounded"
+            className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-5 rounded"
             onClick={() => handlePriorityFilter("low")}
           >
             Low
@@ -92,7 +92,7 @@ const Todos = () => {
         </div>
         <div>
           <button
-            className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-5 rounded"
+            className=" bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-5 rounded"
             onClick={() => handlePriorityFilter("medium")}
           >
             Medium
