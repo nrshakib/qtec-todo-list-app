@@ -43,9 +43,9 @@ function TodoForm({ addTodo }) {
   };
 
   return (
-    <div className="mt-5 text-center">
+    <div className="grid mt-5 text-center justify-center">
       <h1 className="text-2xl font-bold">TODO LIST</h1>
-      <form className="mt-5 flex gap-4" onSubmit={handleFormSubmit}>
+      <form className="mt-5 flex gap-4 sm:gap-1" onSubmit={handleFormSubmit}>
         <input
           type="name"
           placeholder="Add Todo"
@@ -70,7 +70,12 @@ function TodoForm({ addTodo }) {
           <option value="completed">Completed</option>
           <option value="incomplete">Incomplete</option>
         </select>
-        <button type="submit" className="border border-white rounded px-2 bg-blue-700 text-white">Add Todo</button>
+        <button
+          type="submit"
+          className="border border-white rounded px-2 bg-blue-700 text-white"
+        >
+          Add Todo
+        </button>
       </form>
     </div>
   );

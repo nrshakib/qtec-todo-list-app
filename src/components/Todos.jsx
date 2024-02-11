@@ -73,7 +73,7 @@ const Todos = () => {
   return (
     <div className="grid justify-center">
       <TodoForm addTodo={addTodo} />
-      <div className="flex gap-4 mt-5">
+      <div className="flex gap-4 mt-5 justify-center">
         <div>
           <button
             className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-5 rounded"
