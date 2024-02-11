@@ -2,7 +2,6 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 function TodoForm() {
-  const [tasks, setTasks] = useState([]);
   const [formInput, setFormInput] = useState("");
   const [priority, setPriority] = useState("low");
   const [status, setStatus] = useState("incomplete");
@@ -25,13 +24,14 @@ function TodoForm() {
     if (formInput.trim() === "") {
       return;
     }
+
+    // Add new Task
     const newTask = {
       id: uuidv4(),
       text: formInput,
       priority: priority,
       status: status,
     };
-    setTasks([...tasks, newTask]);
     setFormInput("");
     setPriority("low");
     setStatus("incomplete");
