@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-function TodoForm() {
+function TodoForm({ addTodo }) {
   const [formInput, setFormInput] = useState("");
   const [priority, setPriority] = useState("low");
   const [status, setStatus] = useState("incomplete");
@@ -25,13 +25,17 @@ function TodoForm() {
       return;
     }
 
-    // Add new Task
-    const newTask = {
+    // Add new Todo
+    const newTodo = {
       id: uuidv4(),
       text: formInput,
       priority: priority,
       status: status,
     };
+    // Add the new todo to the Todo List
+    addTodo(newTodo);
+
+    // Take the form state to the initial state
     setFormInput("");
     setPriority("low");
     setStatus("incomplete");
@@ -43,7 +47,7 @@ function TodoForm() {
       <form onSubmit={handleFormSubmit}>
         <input
           type="text"
-          placeholder="Add Task"
+          placeholder="Add Todo"
           value={formInput}
           onChange={handleInputChange}
         />
@@ -56,7 +60,7 @@ function TodoForm() {
           <option value="completed">Completed</option>
           <option value="incomplete">Incomplete</option>
         </select>
-        <button type="submit">Add Task</button>
+        <button type="submit">Add Todo</button>
       </form>
     </div>
   );
