@@ -63,54 +63,109 @@ const Todos = () => {
     (todo) => todo.status === "completed"
   ).length;
   return (
-    <div>
+    <div className="grid justify-center">
       <TodoForm addTodo={addTodo} />
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
             {editTodoId === todo.id ? (
-              <>
+              <div className="flex gap-2 mt-5 items-center pl-2">
                 <input
                   type="name"
                   value={editName}
                   onChange={(e) => setEditName(e.target.value)}
+                  className="w-56 border border-blue-500 rounded"
                 />
                 <select
                   value={editPriority}
                   onChange={(e) => setEditPriority(e.target.value)}
+                  className="appearance-none w-20 text-center text-black border border-blue-500 rounded"
                 >
                   <option value="low">Low</option>
                   <option value="medium">Medium</option>
                   <option value="high">High</option>
                 </select>
-                <button onClick={() => handleSaveEdit(todo.id)}>Save</button>
-              </>
+                <button
+                  className="border-0 rounded bg-green-800 text-white px-2"
+                  onClick={() => handleSaveEdit(todo.id)}
+                >
+                  Save
+                </button>
+              </div>
             ) : (
-              <>
-                <span
-                  className={todo.status === "completed" ? "completed" : ""}
+              <div className="flex gap-12 mt-5 items-center">
+                <p
+                  className={`w-36 py-1 font-semibold overflow-hidden focus:overflow-visible {todo.status === "completed" ? "completed" : ""}`}
                 >
                   {todo.name}
-                </span>
-                <span>{todo.priority}</span>
-                <span>Status: {todo.status}</span>
-                <div>
-                  <button onClick={() => handleToggleComplete(todo.id)}>
+                </p>
+                <p className="w-36">
+                  Priority :-
+                  <span
+                    className={` font-semibold ${
+                      todo.priority === "low"
+                        ? "text-green-600"
+                        : todo.priority === "medium"
+                        ? "text-yellow-500"
+                        : todo.priority === "high"
+                        ? "text-red-500"
+                        : "text-black"
+                    }`}
+                  >
+                    {todo.priority}
+                  </span>
+                </p>
+                <p className="w-36">
+                  Status :-
+                  <span
+                    className={` font-semibold ${
+                      todo.status === "completed"
+                        ? "text-green-600"
+                        : todo.status === "incomplete"
+                        ? "text-red-500"
+                        : "text-black"
+                    }`}
+                  >
+                    {todo.status}
+                  </span>
+                </p>
+                <div className="flex gap-2">
+                  <button
+                    className="border rounded bg-yellow-500 text-white px-2 py-1"
+                    onClick={() => handleToggleComplete(todo.id)}
+                  >
                     {todo.status === "completed"
                       ? "Mark as Incomplete"
                       : "Mark as Completed"}
                   </button>
-                  <button onClick={() => handleEdit(todo.id)}>Edit</button>
-                  <button onClick={() => handleDelete(todo.id)}>Delete</button>
+                  <button
+                    className="border rounded bg-green-800 text-white px-2 py-1"
+                    onClick={() => handleEdit(todo.id)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="border rounded bg-red-600 text-white px-2 py-1"
+                    onClick={() => handleDelete(todo.id)}
+                  >
+                    Delete
+                  </button>
                 </div>
-              </>
+              </div>
             )}
           </li>
         ))}
       </ul>
+      <hr className="my-4" />
       <div>
-        <p>Total Tasks: {allTodosCount}</p>
-        <p>Completed Tasks: {completedTodosCount}</p>
+        <p>
+          Total Tasks:{" "}
+          <span className="text-2xl text-blue-600">{allTodosCount}</span>
+        </p>
+        <p>
+          Completed Tasks:{" "}
+          <span className="text-2xl text-red-600">{completedTodosCount}</span>
+        </p>
       </div>
     </div>
   );

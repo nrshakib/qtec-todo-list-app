@@ -43,25 +43,34 @@ function TodoForm({ addTodo }) {
   };
 
   return (
-    <div className="App">
-      <h1>Todo List</h1>
-      <form onSubmit={handleFormSubmit}>
+    <div className="mt-5 text-center">
+      <h1 className="text-2xl font-bold">TODO LIST</h1>
+      <form className="mt-5 flex gap-4" onSubmit={handleFormSubmit}>
         <input
           type="name"
           placeholder="Add Todo"
           value={formInput}
           onChange={handleInputChange}
+          className="border border-black rounded h-10 w-56 px-2"
         />
-        <select value={priority} onChange={handlePriority}>
+        <select
+          value={priority}
+          onChange={handlePriority}
+          className="appearance-none w-20 text-center text-black border border-blue-500 rounded"
+        >
           <option value="low">Low</option>
           <option value="medium">Medium</option>
           <option value="high">High</option>
         </select>
-        <select value={status} onChange={handleStatus}>
+        <select
+          value={status}
+          onChange={handleStatus}
+          className="appearance-none w-24 text-center text-black border border-blue-500 rounded"
+        >
           <option value="completed">Completed</option>
           <option value="incomplete">Incomplete</option>
         </select>
-        <button type="submit">Add Todo</button>
+        <button type="submit" className="border border-white rounded px-2 bg-blue-700 text-white">Add Todo</button>
       </form>
     </div>
   );
