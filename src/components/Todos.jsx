@@ -6,6 +6,7 @@ const Todos = () => {
   const [editName, setEditName] = useState("");
   const [editPriority, setEditPriority] = useState("");
   const [editTodoId, setEditTodoId] = useState(null);
+  const [filter, setFilter] = useState("all");
 
   // Save todos to local storage whenever state changes
   useEffect(() => {
@@ -57,16 +58,57 @@ const Todos = () => {
     );
     setEditTodoId(null);
   };
-
+  //Function to Filter Todos
+  const filterTodos =
+    filter === "all" ? todos : todos.filter((todo) => todo.priority === filter);
+  const handlePriorityFilter = (priority) => {
+    setFilter(priority);
+  };
+  //counter
   const allTodosCount = todos.length;
   const completedTodosCount = todos.filter(
     (todo) => todo.status === "completed"
   ).length;
+
   return (
     <div className="grid justify-center">
       <TodoForm addTodo={addTodo} />
+      <div className="flex gap-4 mt-5">
+        <div>
+          <button
+            className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-5 rounded"
+            onClick={() => handlePriorityFilter("all")}
+          >
+            All
+          </button>
+        </div>
+        <div>
+          <button
+            className="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-2 px-5 rounded"
+            onClick={() => handlePriorityFilter("low")}
+          >
+            Low
+          </button>
+        </div>
+        <div>
+          <button
+            className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-5 rounded"
+            onClick={() => handlePriorityFilter("medium")}
+          >
+            Medium
+          </button>
+        </div>
+        <div>
+          <button
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 rounded"
+            onClick={() => handlePriorityFilter("high")}
+          >
+            High
+          </button>
+        </div>
+      </div>
       <ul>
-        {todos.map((todo) => (
+        {filterTodos.map((todo) => (
           <li key={todo.id}>
             {editTodoId === todo.id ? (
               <div className="flex gap-2 mt-5 items-center pl-2">
@@ -157,14 +199,14 @@ const Todos = () => {
         ))}
       </ul>
       <hr className="my-4" />
-      <div>
+      <div className="flex gap-2">
         <p>
-          Total Tasks:{" "}
-          <span className="text-2xl text-blue-600">{allTodosCount}</span>
+          Total Tasks :
+          <span className="text-2xl text-blue-600"> {allTodosCount}</span>
         </p>
         <p>
-          Completed Tasks:{" "}
-          <span className="text-2xl text-red-600">{completedTodosCount}</span>
+          Completed Tasks :
+          <span className="text-2xl text-red-600"> {completedTodosCount}</span>
         </p>
       </div>
     </div>
