@@ -29,7 +29,7 @@ function TodoForm({ addTodo }) {
     // Add new Todo
     const newTodo = {
       id: uuidv4(),
-      text: formInput,
+      name: formInput,
       priority: priority,
       status: status,
     };
@@ -47,7 +47,7 @@ function TodoForm({ addTodo }) {
       <h1>Todo List</h1>
       <form onSubmit={handleFormSubmit}>
         <input
-          type="text"
+          type="name"
           placeholder="Add Todo"
           value={formInput}
           onChange={handleInputChange}
