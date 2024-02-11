@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-function Todo() {
+function TodoForm() {
   const [tasks, setTasks] = useState([]);
   const [formInput, setFormInput] = useState("");
   const [priority, setPriority] = useState("low");
   const [status, setStatus] = useState("incomplete");
 
   // Functions to control Input Form
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     console.log(e.target.value);
     setFormInput(e.target.value);
   };
@@ -45,7 +45,7 @@ function Todo() {
           type="text"
           placeholder="Add Task"
           value={formInput}
-          onChange={handleChange}
+          onChange={handleInputChange}
         />
         <select value={priority} onChange={handlePriority}>
           <option value="low">Low</option>
@@ -62,4 +62,4 @@ function Todo() {
   );
 }
 
-export default Todo;
+export default TodoForm;
