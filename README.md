@@ -1,8 +1,10 @@
-# React + Vite
+# This ToDo App is implemented using **Vite+ReactJs and TailwindCSS**.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Using this app,user can:
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+i. **_Add Todos_** with choosing **_Todo Priority_** & **_Status_**
+ii. **_Mark Todos_** as _Completed_ or _Incomplete_
+iii._EditTodos_
+iv._DeleteTodos_
+v.**_Filter Todos_** according to _Priority_
+vi.See **_All Todos_** & **_Completed Todos_** as there is a _Counter_ for these.
